@@ -1,12 +1,26 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
+import { useContext } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+  };
+  const { providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  //   Get user information by google signin
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div>
@@ -50,7 +64,11 @@ const Login = () => {
                 <button className="btn btn-primary w-100">Login</button>
               </div>
               <ButtonGroup vertical>
-                <Button className="mb-2" variant="outline-primary">
+                <Button
+                  onClick={handleGoogleSignIn}
+                  className="mb-2"
+                  variant="outline-primary"
+                >
                   <FaGoogle className="d-inline me-3" />
                   Login With Google
                 </Button>

@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const providerLogin = (provider) => {
     return signInWithPopup(auth, provider);
   };
-  const authinfo = { user };
+  const authinfo = { user, providerLogin };
   return (
     <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>
   );
