@@ -5,6 +5,8 @@ import Category from "../Components/Pages/Category/Category";
 import AllCourses from "../Components/Pages/Courses/AllCourses";
 import Courses from "../Components/Pages/Courses/Courses";
 import Home from "../Components/Pages/Home/Home";
+import Login from "../Components/Pages/Login/Login";
+import Signup from "../Components/Pages/Signup/Signup";
 
 export const routes = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ export const routes = createBrowserRouter([
         element: <Blog></Blog>,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/signup",
+    element: <Signup></Signup>,
   },
   { path: "*", element: <h1> 404 This page can't found</h1> },
 ]);

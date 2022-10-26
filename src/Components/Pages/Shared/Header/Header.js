@@ -8,8 +8,11 @@ import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import LeftSide from "../LeftSide/LeftSide";
+import { useContext } from "react";
+import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   const [ChangeColor, setChangeColor] = useState(false);
   const changeBackground = () => {
     setChangeColor(!ChangeColor);
@@ -51,12 +54,12 @@ const Header = () => {
           </Nav>
           <Nav>
             <ButtonGroup>
-              <Link>
+              <Link to="/login">
                 <Button className="headerButton" variant="outline-warning">
                   Login
                 </Button>
               </Link>
-              <Link>
+              <Link to="/signup">
                 <Button className="headerButton" variant="outline-dark">
                   Signup
                 </Button>
@@ -67,6 +70,7 @@ const Header = () => {
                 <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png" />
               </div>
             </div>
+            <p className="ms-3">{user?.name}</p>
             <div className="d-lg-none">
               <LeftSide></LeftSide>
             </div>
