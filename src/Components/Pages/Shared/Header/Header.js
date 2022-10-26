@@ -43,7 +43,9 @@ const Header = () => {
               <Link className="navLink">Faq</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link className="navLink">Blog</Link>
+              <Link to="/blog" className="navLink">
+                Blog
+              </Link>
             </Nav.Link>
             <button onClick={changeBackground}>Change Background</button>
           </Nav>

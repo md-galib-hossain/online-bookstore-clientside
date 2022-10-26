@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Components/Layout/Main";
+import Blog from "../Components/Pages/Blog/Blog";
 import Category from "../Components/Pages/Category/Category";
 import AllCourses from "../Components/Pages/Courses/AllCourses";
 import Courses from "../Components/Pages/Courses/Courses";
@@ -32,6 +33,11 @@ export const routes = createBrowserRouter([
         element: <AllCourses></AllCourses>,
         loader: () => fetch("http://localhost:5000/courses"),
       },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
     ],
   },
+  { path: "*", element: <h1> 404 This page can't found</h1> },
 ]);
