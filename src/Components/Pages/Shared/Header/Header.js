@@ -6,7 +6,6 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-
 import "./Header.css";
 import LeftSide from "../LeftSide/LeftSide";
 
@@ -19,16 +18,18 @@ const Header = () => {
     <Navbar className="mb-4" collapseOnSelect expand="lg">
       <Container>
         <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src={
-              "	https://i.pinimg.com/564x/b3/d0/f8/b3d0f80577c33445be9cd2ba76741992.jpg"
-            }
-            width="50"
-            height="50"
-            className="d-inline-block align-top"
-          />
-          <h2 className="d-inline-block ms-2">e-learning</h2>
+          <Link className="navLogo" to="/">
+            <img
+              alt=""
+              src={
+                "	https://i.pinimg.com/564x/b3/d0/f8/b3d0f80577c33445be9cd2ba76741992.jpg"
+              }
+              width="50"
+              height="50"
+              className="d-inline-block align-top"
+            />
+            <h2 className="d-inline-block ms-2">e-learning</h2>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
