@@ -20,7 +20,7 @@ const CourseCard = ({ course }) => {
           )}
         </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Listen</button>
+          <button className="btn btn-warning">Kaj korte hobe</button>
         </div>
       </div>
     </div>

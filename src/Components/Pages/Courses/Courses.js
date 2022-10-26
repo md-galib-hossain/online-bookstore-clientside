@@ -16,7 +16,7 @@ const Courses = () => {
         <div className="card-actions justify-end">
           {/* show more on this category */}
           <Link to={`/category/${idno}`}>
-            <button className="btn btn-primary">
+            <button className="btn btn-warning">
               Find more on this Category
             </button>
           </Link>

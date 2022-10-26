@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <Navbar className="mb-4" collapseOnSelect expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand>
           <Link className="navLogo" to="/">
             <img
               alt=""
@@ -34,15 +34,17 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link className="navLink">
-              <Nav.Link>Courses</Nav.Link>
-            </Link>
-            <Link className="navLink">
-              <Nav.Link>Faq</Nav.Link>
-            </Link>
-            <Link className="navLink">
-              <Nav.Link>Blog</Nav.Link>
-            </Link>
+            <Nav.Link>
+              <Link to="/courses" className="navLink">
+                Courses
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link className="navLink">Faq</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link className="navLink">Blog</Link>
+            </Nav.Link>
             <button onClick={changeBackground}>Change Background</button>
           </Nav>
           <Nav>
