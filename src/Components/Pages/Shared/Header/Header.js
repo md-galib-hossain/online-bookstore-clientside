@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { Button, ButtonGroup, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -10,9 +10,15 @@ import "./Header.css";
 import LeftSide from "../LeftSide/LeftSide";
 import { useContext } from "react";
 import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   const [ChangeColor, setChangeColor] = useState(false);
   const changeBackground = () => {
     setChangeColor(!ChangeColor);
@@ -53,24 +59,53 @@ const Header = () => {
             <button onClick={changeBackground}>Change Background</button>
           </Nav>
           <Nav>
-            <ButtonGroup>
-              <Link to="/login">
-                <Button className="headerButton" variant="outline-warning">
-                  Login
-                </Button>
-              </Link>
-              <Link to="/signup">
-                <Button className="headerButton" variant="outline-dark">
-                  Signup
-                </Button>
-              </Link>
-            </ButtonGroup>
-            <div className="avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png" />
-              </div>
-            </div>
-            <p className="ms-3">{user?.name}</p>
+            <Nav.Link>
+              {user?.uid ? (
+                <>
+                  <Button
+                    onClick={handleLogOut}
+                    className="headerButton"
+                    variant="light"
+                  >
+                    Logout
+                  </Button>
+
+                  <span>{user?.displayName}</span>
+                </>
+              ) : (
+                <>
+                  <ButtonGroup>
+                    <Link to="/login">
+                      <Button
+                        className="headerButton"
+                        variant="outline-warning"
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to="/signup">
+                      <Button className="headerButton" variant="outline-dark">
+                        Signup
+                      </Button>
+                    </Link>
+                  </ButtonGroup>
+                </>
+              )}
+            </Nav.Link>
+            <Nav.Link>
+              {user?.photoURL ? (
+                <a title={user?.displayName}>
+                  <Image
+                    style={{ height: "40px" }}
+                    roundedCircle
+                    src={user.photoURL}
+                  ></Image>
+                </a>
+              ) : (
+                <FaUser />
+              )}
+            </Nav.Link>
+
             <div className="d-lg-none">
               <LeftSide></LeftSide>
             </div>
