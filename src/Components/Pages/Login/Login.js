@@ -3,15 +3,25 @@ import React from "react";
 import { useContext } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+
 const Login = () => {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        form.reset();
+        navigate("/");
+      })
+      .catch((error) => console.error(error));
   };
-  const { providerLogin } = useContext(AuthContext);
+  const { providerLogin, signIn } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   //   Get user information by google signin
   const handleGoogleSignIn = () => {
@@ -21,6 +31,7 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
