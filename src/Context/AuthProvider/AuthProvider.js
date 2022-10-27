@@ -23,9 +23,15 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
   //register
-  const createUser = (email, password) => {
+  const createUser = (email, password, name, photoURL) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+      name,
+      photoURL
+    );
   };
   //sign in with email pass
   const signIn = (email, password) => {
@@ -40,7 +46,6 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      console.log(user);
     });
     return () => {
       unsubscribe();

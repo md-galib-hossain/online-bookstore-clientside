@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const Signup = () => {
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const { createUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
@@ -13,11 +16,15 @@ const Signup = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    createUser(email, password)
+    const photoURL = form.photoURL.value;
+
+    createUser(email, password, name, photoURL)
       .then((result) => {
         const user = result.user;
+
         setError("");
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -35,14 +42,24 @@ const Signup = () => {
             <form onSubmit={handleSubmit} className="card-body">
               <div className="">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text">Full Name</span>
                 </label>
                 <input
                   type="text"
                   name="name"
-                  placeholder="name"
+                  placeholder="full name"
                   className="input input-bordered w-100 "
-                  required
+                />
+              </div>
+              <div className="">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  placeholder="photoURL"
+                  className="input input-bordered w-100 "
                 />
               </div>
               <div className="">
