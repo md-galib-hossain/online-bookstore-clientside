@@ -1,9 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const Signup = () => {
+  const [error, setError] = useState("");
   const { createUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,9 +16,13 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        setError("");
         form.reset();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
   return (
     <div>
@@ -68,6 +74,7 @@ const Signup = () => {
                   </Link>
                 </label>
               </div>
+              <p className="text-danger">{error}</p>
               <div className=" text-center  mt-6">
                 <button className="btn btn-primary w-100">Register</button>
               </div>

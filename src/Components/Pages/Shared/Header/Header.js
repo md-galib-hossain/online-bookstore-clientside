@@ -45,7 +45,7 @@ const Header = () => {
           <Nav className="me-auto">
             <Nav.Link>
               <Link to="/courses" className="navLink">
-                Courses
+                All Courses
               </Link>
             </Nav.Link>
             <Nav.Link>
