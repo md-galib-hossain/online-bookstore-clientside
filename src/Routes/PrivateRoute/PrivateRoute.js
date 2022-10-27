@@ -1,12 +1,19 @@
 import React from "react";
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 // only authenticated user can visit the route
 const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
+  // location where user wanted to go before authenticate
+  const location = useLocation();
+  if (loading) {
+    return <Spinner animation="border" variant="warning" />;
+  }
   if (!user) {
-    return <Navigate to="/login"></Navigate>;
+    // rediret user to the router they wanted to go before login
+    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   }
   return children;
 };

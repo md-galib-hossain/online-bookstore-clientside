@@ -1,14 +1,19 @@
 import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
+  // login er por kothay jaite hobe ta set kora
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   // Setting Error State
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -23,7 +28,7 @@ const Login = () => {
         form.reset();
 
         setError("");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -37,6 +42,17 @@ const Login = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
+  // get information from github
+  const githubProvider = new GithubAuthProvider();
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
@@ -95,7 +111,7 @@ const Login = () => {
                   <FaGoogle className="d-inline me-3" />
                   Login With Google
                 </Button>
-                <Button variant="outline-dark">
+                <Button onClick={handleGithubSignIn} variant="outline-dark">
                   <FaGithub className="d-inline me-3" />
                   Login With Github
                 </Button>
