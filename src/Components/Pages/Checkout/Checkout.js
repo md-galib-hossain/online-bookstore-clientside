@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./Checkout.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = () => {
   const course = useLoaderData();
-
+  const notify = () => toast("Congratulations You have Successfully Purchased");
   const { _id, body, image, idno, name } = course;
   return (
     <div className="flex justify-center items-center">
@@ -61,17 +63,20 @@ const Checkout = () => {
             </div>
 
             <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">
-              <button className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-black hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
+              <button
+                onClick={notify}
+                className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-orange-600 text-white  hover:text-black flex flex-row justify-center items-center space-x-2 py-4 rounded w-full"
+              >
                 <div></div>
                 <div>
                   <p className="text-base leading-4">BUY NOW</p>
                 </div>
               </button>
               <Link to="/" className="checkButton">
-                <button className="  border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-white text-black hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
+                <button className="  border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-orange-600 text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
                   <div></div>
                   <div>
-                    <p className=" text-base leading-4">Go To Home</p>
+                    <p className="text-base leading-4">Go To Home</p>
                   </div>
                 </button>
               </Link>
@@ -130,6 +135,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

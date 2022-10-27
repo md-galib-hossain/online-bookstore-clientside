@@ -7,10 +7,6 @@ const Home = () => {
   const courses = useLoaderData();
   return (
     <div>
-      <h2>
-        <FaUserAlt />
-        this is home :{courses.length}
-      </h2>
       {courses.map((course) => (
         <CourseCard key={course._id} course={course}></CourseCard>
       ))}
