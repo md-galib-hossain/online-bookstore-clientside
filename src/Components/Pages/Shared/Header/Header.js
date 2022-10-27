@@ -20,10 +20,7 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
-  const [ChangeColor, setChangeColor] = useState(false);
-  const changeBackground = () => {
-    setChangeColor(!ChangeColor);
-  };
+
   return (
     <Navbar className="mb-4" collapseOnSelect expand="lg">
       <Container>
@@ -57,7 +54,7 @@ const Header = () => {
                 Blog
               </Link>
             </Nav.Link>
-            <button onClick={changeBackground}>Change Background</button>
+            <button>Change Background</button>
           </Nav>
           <Nav>
             <Nav.Link>

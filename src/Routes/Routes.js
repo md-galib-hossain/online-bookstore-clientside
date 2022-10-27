@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Components/Layout/Main";
+import Checkout from "../Components/Pages/Checkout/Checkout";
 import Blog from "../Components/Pages/Blog/Blog";
 import Category from "../Components/Pages/Category/Category";
 import AllCourses from "../Components/Pages/Courses/AllCourses";
@@ -57,6 +58,14 @@ export const routes = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup></Signup>,
+  },
+  {
+    path: "/checkout",
+    element: (
+      <PrivateRoute>
+        <Checkout></Checkout>
+      </PrivateRoute>
+    ),
   },
   { path: "*", element: <h1> 404 This page can't found</h1> },
 ]);

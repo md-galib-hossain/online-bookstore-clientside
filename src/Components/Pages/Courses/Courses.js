@@ -15,10 +15,8 @@ const Courses = () => {
         <p>{body}</p>
         <div className="card-actions justify-end">
           {/* show more on this category */}
-          <Link to={`/category/${idno}`}>
-            <button className="btn btn-warning">
-              Find more on this Category
-            </button>
+          <Link to={"/checkout"}>
+            <button className="btn btn-warning">Get premium access</button>
           </Link>
         </div>
       </div>
