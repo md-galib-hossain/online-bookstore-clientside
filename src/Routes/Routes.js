@@ -18,13 +18,18 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () =>
+          fetch(
+            " https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses"
+          ),
       },
       {
         path: "/category/:id",
         element: <Category></Category>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(
+            ` https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/category/${params.id}`
+          ),
       },
       {
         path: "/courses/:id",
@@ -34,7 +39,9 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(
+            ` https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses/${params.id}`
+          ),
       },
       {
         path: "/courses",
@@ -43,7 +50,10 @@ export const routes = createBrowserRouter([
             <AllCourses></AllCourses>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () =>
+          fetch(
+            " https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses"
+          ),
       },
       {
         path: "/blog",
@@ -66,7 +76,10 @@ export const routes = createBrowserRouter([
         <Checkout></Checkout>
       </PrivateRoute>
     ),
-    loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+    loader: ({ params }) =>
+      fetch(
+        ` https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses/${params.id}`
+      ),
   },
 
   { path: "*", element: <h1> 404 This page can't found</h1> },

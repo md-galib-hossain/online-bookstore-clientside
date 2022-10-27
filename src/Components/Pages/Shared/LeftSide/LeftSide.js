@@ -8,7 +8,9 @@ const LeftSide = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     // "https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/categories"
-    fetch("http://localhost:5000/categories")
+    fetch(
+      " https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/categories"
+    )
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

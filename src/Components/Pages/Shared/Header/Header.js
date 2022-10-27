@@ -64,11 +64,7 @@ const Header = () => {
               </Link>
             </Nav.Link>
             <Nav.Link onClick={setBackground}>
-              {color ? (
-                <p className="text-white">Make Light</p>
-              ) : (
-                <p>Make Dark</p>
-              )}
+              {color ? <p className="text-white">Light</p> : <p>Dark</p>}
             </Nav.Link>
           </Nav>
           <Nav>
