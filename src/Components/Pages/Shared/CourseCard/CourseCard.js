@@ -19,7 +19,7 @@ const CourseCard = ({ course }) => {
             <p> {course.body}</p>
           )}
         </p>
-        <Link>
+        <Link to={`/checkout/${course._id}`}>
           <div className="card-actions justify-end">
             <button className="btn btn-warning">Get Premium Access</button>
           </div>

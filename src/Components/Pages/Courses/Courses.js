@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const Courses = () => {
   const course = useLoaderData();
-  console.log(course);
+
   const { _id, body, image, idno } = course;
   return (
     <div className="card lg:card-side mb-5 bg-base-100 shadow-xl">

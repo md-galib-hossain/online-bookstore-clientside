@@ -20,9 +20,18 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
+  const [color, setColor] = useState(false);
+  const setBackground = () => {
+    return setColor(!color);
+  };
 
   return (
-    <Navbar className="mb-4" collapseOnSelect expand="lg">
+    <Navbar
+      bg={color ? "dark" : "light"}
+      className="mb-4"
+      collapseOnSelect
+      expand="lg"
+    >
       <Container>
         <Navbar.Brand>
           <Link className="navLogo" to="/">
@@ -35,7 +44,7 @@ const Header = () => {
               height="50"
               className="d-inline-block align-top"
             />
-            <h2 className="d-inline-block ms-2">e-learning</h2>
+            <h2 className="navLink d-inline-block ms-2">e-learning</h2>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -54,7 +63,13 @@ const Header = () => {
                 Blog
               </Link>
             </Nav.Link>
-            <button>Change Background</button>
+            <Nav.Link onClick={setBackground}>
+              {color ? (
+                <p className="text-white">Make Light</p>
+              ) : (
+                <p>Make Dark</p>
+              )}
+            </Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link>
@@ -68,7 +83,7 @@ const Header = () => {
                     Logout
                   </Button>
 
-                  <span>{user?.displayName}</span>
+                  <span className="userName">{user?.displayName}</span>
                 </>
               ) : (
                 <>

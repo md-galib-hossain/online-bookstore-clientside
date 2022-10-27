@@ -60,12 +60,14 @@ export const routes = createBrowserRouter([
     element: <Signup></Signup>,
   },
   {
-    path: "/checkout",
+    path: "/checkout/:id",
     element: (
       <PrivateRoute>
         <Checkout></Checkout>
       </PrivateRoute>
     ),
+    loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
   },
+
   { path: "*", element: <h1> 404 This page can't found</h1> },
 ]);

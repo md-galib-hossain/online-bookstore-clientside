@@ -12,3 +12,7 @@
 .navLogo {
   text-decoration: none;
 }
+.userName {
+  font-weight: 500;
+  color: orange;
+}
