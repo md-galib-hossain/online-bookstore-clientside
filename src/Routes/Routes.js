@@ -3,12 +3,15 @@ import Main from "../Components/Layout/Main";
 import Checkout from "../Components/Pages/Checkout/Checkout";
 import Blog from "../Components/Pages/Blog/Blog";
 import Category from "../Components/Pages/Category/Category";
-import AllCourses from "../Components/Pages/Courses/AllCourses";
-import Courses from "../Components/Pages/Courses/Courses";
+import AllBooks from "../Components/Pages/Books/AllBooks";
+import Books from "../Components/Pages/Books/Books";
 import Home from "../Components/Pages/Home/Home";
 import Login from "../Components/Pages/Login/Login";
 import Signup from "../Components/Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Admin from "../Components/Pages/Admin/Admin";
+import AdminSingleBook from "../Components/Pages/Admin/AdminSingleBook";
+import Addbook from "../Components/Pages/Admin/Addbook";
 
 export const routes = createBrowserRouter([
   {
@@ -20,7 +23,7 @@ export const routes = createBrowserRouter([
         element: <Home></Home>,
         loader: () =>
           fetch(
-            " https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses"
+            " https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/category/1"
           ),
       },
       {
@@ -28,31 +31,31 @@ export const routes = createBrowserRouter([
         element: <Category></Category>,
         loader: ({ params }) =>
           fetch(
-            ` https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/category/${params.id}`
+            ` https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/category/${params.id}`
           ),
       },
       {
-        path: "/courses/:id",
+        path: "/books/:id",
         element: (
           <PrivateRoute>
-            <Courses></Courses>
+            <Books></Books>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
           fetch(
-            ` https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses/${params.id}`
+            ` https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/books/${params.id}`
           ),
       },
       {
-        path: "/courses",
+        path: "/books",
         element: (
           <PrivateRoute>
-            <AllCourses></AllCourses>
+            <AllBooks></AllBooks>
           </PrivateRoute>
         ),
         loader: () =>
           fetch(
-            " https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses"
+            " https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/books"
           ),
       },
       {
@@ -78,7 +81,43 @@ export const routes = createBrowserRouter([
     ),
     loader: ({ params }) =>
       fetch(
-        ` https://b610-lerning-platform-server-side-mdgalibhossain1.vercel.app/courses/${params.id}`
+        `https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/books/${params.id}`
+      ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <PrivateRoute>
+        <Admin></Admin>
+      </PrivateRoute>
+    ),
+    loader: () =>
+      fetch(
+        " https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/books"
+      ),
+  },
+  {
+    path: "/adminsinglebook/:id",
+    element: (
+      <PrivateRoute>
+        <AdminSingleBook></AdminSingleBook>
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      fetch(
+        `https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/adminsinglebook/${params.id}`
+      ),
+  },
+  {
+    path: "/adminaddbook",
+    element: (
+      <PrivateRoute>
+        <Addbook></Addbook>
+      </PrivateRoute>
+    ),
+    loader: () =>
+      fetch(
+        "https://b610-lerning-platform-server-side-mdgalibhossai-mdgalibhossain1.vercel.app/books"
       ),
   },
 

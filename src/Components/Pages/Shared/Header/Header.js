@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
+
 import { Button, ButtonGroup, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import "./Header.css";
@@ -13,25 +13,19 @@ import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, setBackground, color } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.error(error));
   };
-  const [color, setColor] = useState(false);
-  const setBackground = () => {
-    return setColor(!color);
+  const handleColor = () => {
+    setBackground();
   };
 
   return (
-    <Navbar
-      bg={color ? "dark" : "light"}
-      className="mb-4"
-      collapseOnSelect
-      expand="lg"
-    >
+    <Navbar className="mb-4 custom-box " collapseOnSelect expand="lg">
       <Container>
         <Navbar.Brand>
           <Link className="navLogo" to="/">
@@ -44,26 +38,24 @@ const Header = () => {
               height="50"
               className="d-inline-block align-top"
             />
-            <h2 className="navLink d-inline-block ms-2">e-learning</h2>
+            <h2 className="navLink d-inline-block ms-2">Online Book Store</h2>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link>
-              <Link to="/courses" className="navLink">
-                All Courses
+              <Link to="/books" className="navLink">
+                All Books
               </Link>
             </Nav.Link>
-            <Nav.Link>
-              <Link className="navLink">Faq</Link>
-            </Nav.Link>
+
             <Nav.Link>
               <Link to="/blog" className="navLink">
                 Blog
               </Link>
             </Nav.Link>
-            <Nav.Link onClick={setBackground}>
+            <Nav.Link onClick={handleColor}>
               {color ? <p className="text-white">Light</p> : <p>Dark</p>}
             </Nav.Link>
           </Nav>

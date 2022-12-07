@@ -5,9 +5,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = () => {
-  const course = useLoaderData();
+  const book = useLoaderData();
+
   const notify = () => toast("Congratulations You have Successfully Purchased");
-  const { _id, body, image, idno, name } = course;
+  const { _id, body, image, idno, name } = book[0];
+
   return (
     <div className="flex justify-center items-center">
       <div className="py-16 px-4 md:px-6 2xl:px-0 flex justify-center items-center 2xl:mx-auto 2xl:container">

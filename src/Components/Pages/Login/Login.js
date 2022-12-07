@@ -66,6 +66,7 @@ const Login = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit} className="card-body">
+              {/* email */}
               <div className="">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -78,6 +79,7 @@ const Login = () => {
                   required
                 />
               </div>
+              {/* password */}
               <div className="">
                 <label className="label">
                   <span className="label-text">Password</span>
