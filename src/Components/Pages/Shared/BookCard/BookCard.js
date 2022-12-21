@@ -21,11 +21,12 @@ const BookCard = ({ book }) => {
             <p> {book?.body}</p>
           )}
         </p>
-        <Link to={`/checkout/${book._id}`}>
-          <div className=" card-actions justify-end">
+
+        <div className=" card-actions justify-end">
+          <Link to={`/checkout/${book._id}`}>
             <button className=" btn btn-warning">Order Book</button>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );
