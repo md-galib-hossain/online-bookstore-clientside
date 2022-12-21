@@ -93,6 +93,7 @@ const Checkout = () => {
                   className="border border-gray-300 p-4 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                   type="email"
                   placeholder="Email"
+                  required
                 />
               </div>
 

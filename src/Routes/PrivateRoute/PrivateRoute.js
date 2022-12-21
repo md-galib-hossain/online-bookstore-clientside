@@ -9,7 +9,9 @@ const PrivateRoute = ({ children }) => {
   // location where user wanted to go before authenticate
   const location = useLocation();
   if (loading) {
-    return <Spinner animation="border" variant="warning" />;
+    return (
+      <Spinner className="mx-auto my-96" animation="border" variant="warning" />
+    );
   }
   if (!user) {
     // rediret user to the router they wanted to go before login

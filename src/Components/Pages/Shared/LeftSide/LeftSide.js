@@ -18,15 +18,15 @@ const LeftSide = () => {
   return (
     <div className="">
       <h4>All category: {categories.length}</h4>
-      <div>
+      <ul className="menu menu-vertical px-1">
         {categories.map((category) => (
-          <p key={category.idno}>
+          <li className="my-1" key={category.idno}>
             <Link className="navLink" to={`/category/${category.idno}`}>
               {category.userid}
             </Link>
-          </p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
