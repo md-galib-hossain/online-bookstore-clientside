@@ -6,9 +6,8 @@ import { Link, useLoaderData } from "react-router-dom";
 const AdminSingleBook = () => {
   const book = useLoaderData();
   const [mybook, setMybook] = useState(book);
-  // Updating review
+  // Updating book
   const handleSubmit = (event) => {
-    // UseTitle("Edit Review");
     // Sending data to server
     event.preventDefault();
     fetch(
